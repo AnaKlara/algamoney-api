@@ -44,6 +44,7 @@ public class CategoriaResource {
 	}
 	 */
 	
+	
 	@PostMapping
 	public ResponseEntity<Categoria> criar(@RequestBody Categoria categoria, HttpServletResponse response) {
 		
@@ -57,6 +58,7 @@ public class CategoriaResource {
 	
 		return ResponseEntity.created(uri).body(categoriaSalva);
 	}
+	
 	
 	@GetMapping("/{codigo}")
 	public Categoria buscarPeloCodigo(@PathVariable Long codigo) {
