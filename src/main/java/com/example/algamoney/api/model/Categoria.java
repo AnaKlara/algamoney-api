@@ -5,6 +5,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.*;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 
 //MODEL CATEGORIA
@@ -17,6 +19,8 @@ public class Categoria {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	
+	@NotNull //3.10
+	@Size(min = 3, max = 20)
 	private String nome;
 
 	public Long getCodigo() {
