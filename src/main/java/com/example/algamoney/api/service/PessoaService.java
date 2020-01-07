@@ -1,7 +1,5 @@
 package com.example.algamoney.api.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -11,24 +9,52 @@ import com.example.algamoney.api.model.Pessoa;
 import com.example.algamoney.api.repository.PessoaRepository;
 
 @Service
-public class PessoaService {  
+public class PessoaService {
 	
 	@Autowired
-	private static PessoaRepository pessoaRepository;
+	private  PessoaRepository pessoaRepository;
 	
-	  public static Pessoa atualizar(Long codigo, Pessoa pessoa) {
-			Optional<Pessoa> pessoaSalva = pessoaRepository.findById(codigo);
-			
-			if (!pessoaSalva.isPresent()) {
-				throw new EmptyResultDataAccessException(1);
-			}
-			
-			BeanUtils.copyProperties(pessoa, pessoaSalva,"codigo"); 
-			pessoa.setCodigo(codigo);
-	  return pessoaRepository.save(pessoa);
-	  }
+
+	/**Atualiza pessoa*/
+	public Pessoa atualizarPessoa(Long codigo, Pessoa pessoa) {
+		
+		Pessoa pessoaSalva = buscarPessoaPeloCodigo(codigo);
+		
+		/* BeansUtils pode ser usado para ajudar a tratar os dados para atualziar
+		 * Source: A fonte dos dados - no caso da classe pessoas
+		 * target: Para onde irei mandar os dados - no caso para minha variavel pessoaSalva
+		 * ignoreProperties: qual dado devo ignorar - no caso o codigo que é PK
+		 * 
+		 * BeanUtils.copyProperties(source, target, ignoreProperties);
+		 */
+		BeanUtils.copyProperties(pessoa, pessoaSalva, "codigo");
+		return pessoaRepository.save(pessoaSalva);	
+	}
+	
+	
+	/**Atualiza apenas o campo ativo da classe pessoa*/
+	public void atualizarPropriedadeAtivo(Long codigo, Boolean ativo) {
+
+		Pessoa pessoaSalva = buscarPessoaPeloCodigo(codigo);
+		pessoaSalva.setAtivo(ativo);
+		pessoaRepository.save(pessoaSalva);
+		
+	}
+	
+	/**Busca a pessoa pelo ID e já verifica se o codigo é invalido (se invalido retorna 404 Not Found)*/
+	private Pessoa buscarPessoaPeloCodigo(Long codigo) {
+		
+		Pessoa pessoaSalva = pessoaRepository.findById(codigo).orElseThrow(() -> new EmptyResultDataAccessException(1));
+		if (pessoaSalva == null) {
+			throw new EmptyResultDataAccessException(1);
+		}
+		return pessoaSalva;
+	}
+	
 
 }
+
+
 
 /*
 * Foi adicionada regra que trata diretamente de inserção/atualização de dados ao banco, 
