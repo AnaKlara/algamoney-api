@@ -42,7 +42,7 @@ public class PessoaService {
 	}
 	
 	/**Busca a pessoa pelo ID e já verifica se o codigo é invalido (se invalido retorna 404 Not Found)*/
-	private Pessoa buscarPessoaPeloCodigo(Long codigo) {
+	public Pessoa buscarPessoaPeloCodigo(Long codigo) {
 		
 		Pessoa pessoaSalva = pessoaRepository.findById(codigo).orElseThrow(() -> new EmptyResultDataAccessException(1));
 		if (pessoaSalva == null) {

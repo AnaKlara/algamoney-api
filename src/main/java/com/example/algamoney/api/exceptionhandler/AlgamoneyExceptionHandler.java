@@ -1,5 +1,11 @@
 //3.9
 package com.example.algamoney.api.exceptionhandler;
+/*
+ * Aqui estão as exceções gerais que qualquer controlador poderia gerar
+ * 
+ * */
+
+
 
 import java.util.ArrayList;
 import java.util.Arrays;
