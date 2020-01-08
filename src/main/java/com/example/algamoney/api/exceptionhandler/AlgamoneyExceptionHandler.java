@@ -5,9 +5,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -102,5 +104,20 @@ public class AlgamoneyExceptionHandler extends ResponseEntityExceptionHandler {
 		return handleExceptionInternal(ex, erros, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
 	}
 	
+	
+	//5.4
+	@ExceptionHandler({ DataIntegrityViolationException.class }) //um array com os tipos de exceções que essa função irá tratar
+	public ResponseEntity<Object> handleDataIntegrityViolationException(DataIntegrityViolationException ex, WebRequest  request){
+		
+		String mensagemUsuario = messageSource.getMessage("recurso.operacao-nao-encontrada", null, LocaleContextHolder.getLocale() );
+		//recurso.notFound está no arquivo messages.properties em src/mais/resources
+		
+		String mensagemDesenvolvedor = ExceptionUtils.getRootCauseMessage(ex);
+		//String mensagemDesenvolvedor = ex.toString();
+		
+		List<Erro> erros = Arrays.asList(new Erro(mensagemUsuario, mensagemDesenvolvedor ));
+		
+		return handleExceptionInternal(ex, erros, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+	}
 	
 }
