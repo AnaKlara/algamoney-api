@@ -3,6 +3,7 @@ package com.example.algamoney.api.resource;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
@@ -47,7 +48,7 @@ public class LancamentoResource {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Lancamento> criar(@RequestBody Lancamento lancamento, HttpServletResponse response) {
+	public ResponseEntity<Lancamento> criar(@Valid @RequestBody Lancamento lancamento, HttpServletResponse response) {
 
 		Lancamento lancamentoSalvo = lancamentoRepository.save(lancamento);
 
