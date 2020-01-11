@@ -3,7 +3,7 @@ package com.example.algamoney.api.repository.filter;
 import java.time.LocalDate;
 
 import org.springframework.format.annotation.DateTimeFormat;
-
+//5.7
 public class LancamentoFilter {
 	
 	private String descricao;

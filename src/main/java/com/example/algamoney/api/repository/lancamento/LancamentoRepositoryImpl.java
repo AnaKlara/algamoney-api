@@ -16,7 +16,7 @@ import org.springframework.util.StringUtils;
 import com.example.algamoney.api.model.Lancamento;
 import com.example.algamoney.api.model.Lancamento_;
 import com.example.algamoney.api.repository.filter.LancamentoFilter;
-
+//5.7
 
 public class LancamentoRepositoryImpl implements LancamentoRepositoryQuery {
 	

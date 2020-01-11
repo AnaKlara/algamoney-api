@@ -53,7 +53,7 @@ public class LancamentoResource {
 		return lancamentoRepository.findAll();
 	}
 */
-	@GetMapping
+	@GetMapping     //5.7
 	public List<Lancamento> pequisar(LancamentoFilter lancamentoFilter) {
 		return lancamentoRepository.filtrar(lancamentoFilter);
 	}
