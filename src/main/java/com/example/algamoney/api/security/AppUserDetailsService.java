@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 import com.example.algamoney.api.model.Usuario;
 import com.example.algamoney.api.repository.UsuarioRepository;
 
-@Service
+@Service// para virar um componente
 public class AppUserDetailsService implements UserDetailsService {
 	
 	@Autowired

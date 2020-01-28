@@ -13,6 +13,11 @@ public class Permissao {
 	private Long codigo;
 	private String descricao;
 
+	
+	
+////////////////////  
+	 
+	
 	public Long getCodigo() {
 		return codigo;
 	}
@@ -28,7 +33,11 @@ public class Permissao {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-
+	
+	
+	
+/////////////////               HASH
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

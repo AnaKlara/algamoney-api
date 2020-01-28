@@ -43,16 +43,9 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	            .scopes("read", "write")
 	            .authorizedGrantTypes("password", "refresh_token")
 	            .accessTokenValiditySeconds(1800)
-	            .refreshTokenValiditySeconds(3600 * 24)
-	          .and()
-	            .withClient("mobile")
-	            .secret("$2a$10$Abx0pzXMx6mPaRqjCkeTwu8N2h.faZD73zUCspOJaGQfnJszq21NS")
-	            .scopes("read")
-	            .authorizedGrantTypes("password", "refresh_token")
-	            .accessTokenValiditySeconds(1800)
-	            .refreshTokenValiditySeconds(3600 * 24)	          
-	          ;
+	            .refreshTokenValiditySeconds(3600 * 24);
 	}
+	
 	
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
