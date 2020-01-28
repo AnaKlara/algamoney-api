@@ -8,8 +8,8 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 
-//6.11 e 6.12 : habilita a segunrança nos métodos (prente nos controllers/resources)
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+//6.11 e 6.12 
+@EnableGlobalMethodSecurity(prePostEnabled = true) // habilita a segunrança nos métodos (prente nos controllers/resources)
 @Configuration
 @EnableResourceServer
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {

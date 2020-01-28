@@ -40,7 +40,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	    clients.inMemory()
 	            .withClient("angular")
 	            .secret("$2a$10$.pMz1hSbN0J6.HYjnZFG1.YWo6wsGEbLIyfi6Bdn3fFpOUsMYBjVu")
-	            .scopes("read", "write")
+	            .scopes("read", "write") // é possível cadastrar diferentes clientes, cada um com escopos diferentes (6:12) --> é um gerenciador de permissões a nível de aplicação
 	            .authorizedGrantTypes("password", "refresh_token")
 	            .accessTokenValiditySeconds(1800)
 	            .refreshTokenValiditySeconds(3600 * 24);
