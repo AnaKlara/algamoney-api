@@ -2,9 +2,11 @@ package com.example.algamoney.api.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.access.expression.method.MethodSecurityExpressionHandler;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
@@ -15,6 +17,8 @@ import org.springframework.security.oauth2.provider.expression.OAuth2MethodSecur
 @EnableGlobalMethodSecurity(prePostEnabled = true) // habilita a segunrança nos métodos (prente nos controllers/resources)
 @Configuration
 @EnableResourceServer
+@EnableWebSecurity
+@Profile("oauth-security")
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
 	@Override
@@ -33,6 +37,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	
 	@Bean
 	public MethodSecurityExpressionHandler createExpressionHandler() {
-		return new OAuth2MethodSecurityExpressionHandler();
+		return new OAuth2MethodSecurityExpressionHandler(); //é um handler para conseguir fazer a segurança dos métodos com oauth2
 	}
 }
