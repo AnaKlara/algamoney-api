@@ -11,15 +11,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class OAuthSecurityConfig extends WebSecurityConfigurerAdapter {
-
+	
 	@Bean
 	@Override
 	public AuthenticationManager authenticationManager() throws Exception {
 	    return super.authenticationManager();
 	}
 
+	//Definimos aqui, o Bean do nosso passwordEncoder (que será usado para fazer o decode da senha do usuário e da secret do cliente
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 	    return new BCryptPasswordEncoder();
 	}
+	
 }

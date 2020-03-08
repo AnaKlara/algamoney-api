@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -14,6 +15,9 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+
+//6.9
+//6.10
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)//prioridade alta
 public class CorsFilter implements Filter{
@@ -40,6 +44,14 @@ public class CorsFilter implements Filter{
 			chain.doFilter(req, resp);			
 		}
 		
+	}
+	
+	@Override
+	public void destroy() {
+	}
+
+	@Override
+	public void init(FilterConfig arg0) throws ServletException {
 	}
 
 }

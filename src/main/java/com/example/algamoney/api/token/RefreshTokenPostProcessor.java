@@ -16,12 +16,17 @@ import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
+
+//6.7
 @ControllerAdvice
-public class RefreshTokenPostProcessor implements ResponseBodyAdvice<OAuth2AccessToken> {
-//antes de responder com o Acess Token, ele irá processar a resposta para que o refresh token seja retirado do header e colocado no cookie
+public class RefreshTokenPostProcessor implements ResponseBodyAdvice<OAuth2AccessToken> { //<> Aqui fica o tipo do dado que eu quero interceptar 6.7
+//antes de responder com o Acess Token, ele irá processar a requisição para que na resposta o refresh token seja retirado do header e colocado no cookie
 	
 	@Override
-	public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
+	public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) { 
+		// 6.7 existem várias ocasiões em que a req contém o tipo de dado <OAuth2AccessToken>, não queremos interceptar todas, mas apenas aquelas
+		// que satisfazem as condições abaixo:
+		//Quando o nome do método for "postAccessToken"
 		return returnType.getMethod().getName().equals("postAccessToken");
 	}
 
@@ -44,17 +49,18 @@ public class RefreshTokenPostProcessor implements ResponseBodyAdvice<OAuth2Acces
 		return body;
 	}
 
+
+	private void adicionarRefreshTokenNoCookie(String refreshToken, HttpServletRequest req, HttpServletResponse resp) {
+		Cookie refreshTokenCookie = new Cookie("refreshToken", refreshToken);//cria o cookie
+		refreshTokenCookie.setHttpOnly(true);//só é acessível com HTTPs
+		refreshTokenCookie.setSecure(false); // TODO: Mudar para true em producao
+		refreshTokenCookie.setPath(req.getContextPath() + "/oauth/token");//pra qual caminho o cookie deve ser enviado pelo browser?
+		refreshTokenCookie.setMaxAge(2592000);//em quanto tempo esse cookie deve expirar em dias?
+		resp.addCookie(refreshTokenCookie);
+	}
+	
+	
 	private void removerRefreshTokenDoBody(DefaultOAuth2AccessToken token) {
 		token.setRefreshToken(null);
 	}
-
-	private void adicionarRefreshTokenNoCookie(String refreshToken, HttpServletRequest req, HttpServletResponse resp) {
-		Cookie refreshTokenCookie = new Cookie("refreshToken", refreshToken);
-		refreshTokenCookie.setHttpOnly(true);
-		refreshTokenCookie.setSecure(false); // TODO: Mudar para true em producao
-		refreshTokenCookie.setPath(req.getContextPath() + "/oauth/token");
-		refreshTokenCookie.setMaxAge(2592000);
-		resp.addCookie(refreshTokenCookie);
-	}
-
 }
