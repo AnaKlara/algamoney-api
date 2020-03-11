@@ -38,8 +38,8 @@ public class CorsFilter implements Filter{
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) resp;
 		
-		response.setHeader("Acess-Control-Allow-Origin", algamoneyApiProperty.getOriginPermitida());
-		response.setHeader("Acess-Control-Allow-Credentials", "true");//necessário para o cookie
+		response.setHeader("Access-Control-Allow-Origin", algamoneyApiProperty.getOriginPermitida());
+		response.setHeader("Access-Control-Allow-Credentials", "true");//necessário para o cookie
 		
 		if ("OPTIONS".contentEquals(request.getMethod()) && algamoneyApiProperty.getOriginPermitida().contentEquals(request.getHeader("Origin"))) {
 			response.setHeader("Access-Control-Allow-Methods", "POST, GET, DELETE, PUT, OPTIONS");
