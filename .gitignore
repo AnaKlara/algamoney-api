@@ -36,7 +36,7 @@ secrets.yml
 .gradletasknamecache
 .sts4-cache
 
-
+*/target/*
 target/
 pom.xml.tag
 pom.xml.releaseBackup
