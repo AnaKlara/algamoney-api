@@ -5,8 +5,6 @@ package com.example.algamoney.api.exceptionhandler;
  * 
  * */
 
-
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -37,6 +35,8 @@ public class AlgamoneyExceptionHandler extends ResponseEntityExceptionHandler {
 	private MessageSource messageSource;
 	
 	
+	
+	
 	@Override
 	protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex, HttpHeaders headers, HttpStatus status, WebRequest request)  {
 		
@@ -48,6 +48,9 @@ public class AlgamoneyExceptionHandler extends ResponseEntityExceptionHandler {
 	}
 	
 	
+	
+	
+	
 	@Override //3.10
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request){
 		
@@ -55,6 +58,8 @@ public class AlgamoneyExceptionHandler extends ResponseEntityExceptionHandler {
 		
 		return handleExceptionInternal(ex, erros, headers, HttpStatus.BAD_REQUEST, request);
 	}
+	
+	
 	
 	
 	private List<Erro> criarListaDeErros( BindingResult bindingResult ){
@@ -77,10 +82,10 @@ public class AlgamoneyExceptionHandler extends ResponseEntityExceptionHandler {
 		private String mensagemDesenvolvedor;
 		private String mensagemUsuario;
 		
-		public Erro(String mensagemDesenvolvedor, String mensagemUsuario) {
+		public Erro( String mensagemUsuario, String mensagemDesenvolvedor) {
 			
-			this.mensagemDesenvolvedor = mensagemDesenvolvedor;
 			this.mensagemUsuario = mensagemUsuario;
+			this.mensagemDesenvolvedor = mensagemDesenvolvedor;
 		}
 
 		public String getMensagemDesenvolvedor() {
