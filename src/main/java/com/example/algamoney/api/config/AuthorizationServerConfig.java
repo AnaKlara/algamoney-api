@@ -37,8 +37,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 				.secret("$2a$10$TZUyFkp1X2F2ymKdey/atu44n8gSyIRLDmg6ly5Q.E5ETFxmz2jM2")//@ngul@r0 encodado com BCrypt
 				.scopes("read", "write")// é possível cadastrar diferentes clientes, cada um com escopos diferentes (6:12) --> é um gerenciador de permissões a nível de aplicação
 				.authorizedGrantTypes("password", "refresh_token")//6.6
-				.accessTokenValiditySeconds(1800)
-				.refreshTokenValiditySeconds(3600 * 24);
+				.accessTokenValiditySeconds(1800) // 1800
+				.refreshTokenValiditySeconds(3600 * 24); //3600 * 24
 	}
 
 	
@@ -63,7 +63,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	}
 
 
-	@Bean // quem precisar desse método recupera através do BEan
+	@Bean // quem precisar desse método recupera através do Bean
 	public JwtAccessTokenConverter accessTokenConverter() { // setar a chave que valida o token
 		JwtAccessTokenConverter accessTokenConverter = new JwtAccessTokenConverter();
 		accessTokenConverter.setSigningKey("algaworks");
