@@ -7,7 +7,7 @@ import org.springframework.context.ApplicationEvent;
 public class RecursoCriadoEvent extends ApplicationEvent  {
 
 	/**
-	 * 
+	 * 3.12
 	 */
 		
 	private static final long serialVersionUID = 1L;

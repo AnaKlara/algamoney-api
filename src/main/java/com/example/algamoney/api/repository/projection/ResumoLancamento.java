@@ -23,8 +23,6 @@ public class ResumoLancamento {
 	}
 	
 	
-	
-	
 	private Long codigo;
 	private String descricao;
 	private LocalDate dataVencimento;
