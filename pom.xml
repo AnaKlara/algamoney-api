@@ -79,6 +79,13 @@
 			<optional>true</optional>
 		</dependency>
 		
+	<!-- Email -->		
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+		
+		<!-- RELATÓRIOS -->
 		<dependency>
 		    <groupId>net.sf.jasperreports</groupId>
 		    <artifactId>jasperreports</artifactId>
@@ -94,6 +101,9 @@
 		    <artifactId>jasperreports-fonts</artifactId>
 		    <version>6.10.0</version>
 		</dependency>
+		
+		
+		
 	</dependencies>
 
 	<build>

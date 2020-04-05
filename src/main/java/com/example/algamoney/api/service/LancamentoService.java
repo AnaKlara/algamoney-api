@@ -13,6 +13,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.example.algamoney.api.dto.LancamentoEstatisticaPessoa;
@@ -113,5 +114,17 @@ public class LancamentoService {
 			
 			return JasperExportManager.exportReportToPdf(jasperPrint);
 		}
+		
+		
+		
+		// Envia Email
+		// 22.15 & 22.16
+		
+		@Scheduled(cron = "0 0 6 * * *")
+		public void avisarSobreLancamentosVencidos() {
+			System.out.println(">>>>>>>>>>>>>>> Método sendo executado...");
+		}
+		
+		
 		
 }
