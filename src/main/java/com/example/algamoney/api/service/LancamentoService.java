@@ -17,10 +17,13 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.example.algamoney.api.dto.LancamentoEstatisticaPessoa;
+import com.example.algamoney.api.mail.Mailer;
 import com.example.algamoney.api.model.Lancamento;
 import com.example.algamoney.api.model.Pessoa;
+import com.example.algamoney.api.model.Usuario;
 import com.example.algamoney.api.repository.LancamentoRepository;
 import com.example.algamoney.api.repository.PessoaRepository;
+import com.example.algamoney.api.repository.UsuarioRepository;
 import com.example.algamoney.api.service.exception.PessoaInexistenteOuInativaException;
 
 import net.sf.jasperreports.engine.JasperExportManager;
@@ -118,13 +121,28 @@ public class LancamentoService {
 		
 		
 		// Envia Email
-		// 22.15 & 22.16
+		// 22.15 & 22.16 & 22.21
+		
+		@Autowired
+		private UsuarioRepository usuarioRepository;
+		
+		private static final String DESTINATARIOS  = "ROLE_PESQUISAR_LANCAMENTO";
+//		
+		@Autowired
+		private Mailer mailer;
+		
+		
 		
 		@Scheduled(cron = "0 0 6 * * *")
 		public void avisarSobreLancamentosVencidos() {
-			System.out.println(">>>>>>>>>>>>>>> Método sendo executado...");
+			List<Lancamento> vencidos = lancamentoRepository
+					.findByDataVencimentoLessThanEqualAndDataPagamentoIsNull(LocalDate.now());
+			
+			List<Usuario> destinatarios = usuarioRepository
+					.findByPermissoesDescricao(DESTINATARIOS);
+			
+			mailer.avisarSobreLancamentosVencidos(vencidos, destinatarios);
 		}
-		
 		
 		
 }

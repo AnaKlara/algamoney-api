@@ -16,6 +16,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "lancamento")
@@ -151,6 +152,12 @@ public class Lancamento {
 		} else if (!codigo.equals(other.codigo))
 			return false;
 		return true;
+	}
+	
+	//22.21
+	@JsonIgnore
+	public boolean isReceita() {
+		return TipoLancamento.RECEITA.equals(tipo);		
 	}
 
 }
