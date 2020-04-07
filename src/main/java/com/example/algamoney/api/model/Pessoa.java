@@ -16,6 +16,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 //MODEL Pessoa
 
@@ -37,6 +38,7 @@ public class Pessoa {
 	private Boolean ativo;
 	
 	// 22.23
+	@JsonIgnoreProperties("pessoa") //22.24 --> evita entrar em loop
 	@Valid 
 	@OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL )
 	private List<Contato> contatos;
