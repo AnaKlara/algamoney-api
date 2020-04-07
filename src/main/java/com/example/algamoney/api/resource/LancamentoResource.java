@@ -139,14 +139,14 @@ public class LancamentoResource {
 	
 	
 	//22.2
-	@GetMapping("/estatisticas/por-categoria/")
+	@GetMapping("/estatisticas/por-categoria")
 	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_LANCAMENTO') and #oauth2.hasScope('read')")
 	public List<LancamentoEstatisticaCategoria> porCategoria() {
 		return this.lancamentoRepository.porCategoria(LocalDate.now());
 	}
 	
 	//22.5
-		@GetMapping("/estatisticas/por-dia/")
+		@GetMapping("/estatisticas/por-dia")
 		@PreAuthorize("hasAuthority('ROLE_PESQUISAR_LANCAMENTO') and #oauth2.hasScope('read')")
 		public List<LancamentoEstatisticaDia> porDia() {
 			return this.lancamentoRepository.porDia(LocalDate.now());

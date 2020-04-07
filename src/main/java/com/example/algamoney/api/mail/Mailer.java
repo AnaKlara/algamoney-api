@@ -1,6 +1,9 @@
 package com.example.algamoney.api.mail;
 
+
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -9,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
 
 @Component
 public class Mailer {
@@ -16,14 +21,42 @@ public class Mailer {
 	@Autowired
 	private JavaMailSender mailSender;
 	
+	@Autowired
+	private TemplateEngine thymeleaf;
+		
+//	@Autowired
+//	private LancamentoRepository repo;
 //	@EventListener
 //	private void teste(ApplicationReadyEvent event) {
+//		String template = "mail/aviso-lancamentos-vencidos";
+//		
+//		List<Lancamento> lista = repo.findAll();
+//		
+//		Map<String, Object> variaveis = new HashMap<>();
+//		variaveis.put("lancamentos", lista);
+//		
 //		this.enviarEmail("testes.algaworks@gmail.com", 
 //				Arrays.asList("alexandre.algaworks@gmail.com"), 
-//				"Testando", "Olá!<br/>Teste ok.");
+//				"Testando", template, variaveis);
 //		System.out.println("Terminado o envio de e-mail...");
 //	}
 	
+	// 22.19
+	public void enviarEmail(String remetente, 
+			List<String> destinatarios, String assunto, String template, 
+			Map<String, Object> variaveis) {
+		Context context = new Context(new Locale("pt", "BR"));
+		
+		variaveis.entrySet().forEach(
+				e -> context.setVariable(e.getKey(), e.getValue()));
+		
+		String mensagem = thymeleaf.process(template, context);
+		
+		this.enviarEmail(remetente, destinatarios, assunto, mensagem);
+	}
+	
+	
+	//22.16
 	public void enviarEmail(String remetente, 
 			List<String> destinatarios, String assunto, String mensagem) {
 		try {
