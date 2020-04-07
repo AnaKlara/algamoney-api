@@ -46,12 +46,13 @@ public class PessoaResource {
 	private PessoaService pessoaService;
 	//PessoaService pService = new PessoaService();
 	
-
+	
+	//22.25
 	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_PESSOA') and #oauth2.hasScope('write')") //6:12
 	@PostMapping
 	public ResponseEntity<Pessoa> criar(@RequestBody Pessoa pessoa, HttpServletResponse response) {
 
-		Pessoa pessoaSalva = pessoaRepository.save(pessoa);
+		Pessoa pessoaSalva = pessoaService.salvar(pessoa);
 
 		publisher.publishEvent(new RecursoCriadoEvent(this , response, pessoaSalva.getCodigo()) );
 

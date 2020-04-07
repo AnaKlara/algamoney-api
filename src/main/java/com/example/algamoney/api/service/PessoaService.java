@@ -20,6 +20,8 @@ public class PessoaService {
 		
 		Pessoa pessoaSalva = buscarPessoaPeloCodigo(codigo);
 		
+		pessoa.getContatos().forEach(c -> c.setPessoa(pessoa) );
+		
 		/* BeansUtils pode ser usado para ajudar a tratar os dados para atualziar
 		 * Source: A fonte dos dados - no caso da classe pessoas
 		 * target: Para onde irei mandar os dados - no caso para minha variavel pessoaSalva
@@ -49,6 +51,13 @@ public class PessoaService {
 			throw new EmptyResultDataAccessException(1);
 		}
 		return pessoaSalva;
+	}
+
+	
+	// 22.25
+	public Pessoa salvar(Pessoa pessoa) {
+		pessoa.getContatos().forEach(c -> c.setPessoa(pessoa) );
+		return pessoaRepository.save(pessoa);
 	}
 	
 
