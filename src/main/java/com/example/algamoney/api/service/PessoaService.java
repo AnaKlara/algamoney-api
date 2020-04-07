@@ -20,7 +20,10 @@ public class PessoaService {
 		
 		Pessoa pessoaSalva = buscarPessoaPeloCodigo(codigo);
 		
-		pessoa.getContatos().forEach(c -> c.setPessoa(pessoa) );
+		// 22.26
+		pessoaSalva.getContatos().clear();
+		pessoaSalva.getContatos().addAll( pessoa.getContatos() );
+		pessoaSalva.getContatos().forEach(c -> c.setPessoa(pessoaSalva) );
 		
 		/* BeansUtils pode ser usado para ajudar a tratar os dados para atualziar
 		 * Source: A fonte dos dados - no caso da classe pessoas
@@ -29,7 +32,7 @@ public class PessoaService {
 		 * 
 		 * BeanUtils.copyProperties(source, target, ignoreProperties);
 		 */
-		BeanUtils.copyProperties(pessoa, pessoaSalva, "codigo");
+		BeanUtils.copyProperties(pessoa, pessoaSalva, "codigo", "contatos");
 		return pessoaRepository.save(pessoaSalva);	
 	}
 	

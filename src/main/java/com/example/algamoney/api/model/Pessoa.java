@@ -40,7 +40,7 @@ public class Pessoa {
 	// 22.23
 	@JsonIgnoreProperties("pessoa") //22.24 --> evita entrar em loop
 	@Valid 
-	@OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL )
+	@OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval=true)
 	private List<Contato> contatos;
 	  
 	  
