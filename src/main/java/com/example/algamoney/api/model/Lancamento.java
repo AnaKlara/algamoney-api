@@ -17,6 +17,7 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "lancamento")
@@ -52,6 +53,7 @@ public class Lancamento {
 	@JoinColumn(name = "codigo_categoria")
 	private Categoria categoria;
 
+	@JsonIgnoreProperties("contatos")
 	@NotNull //validação com BeanValidation --> @Valid
 	@ManyToOne
 	@JoinColumn(name = "codigo_pessoa")
