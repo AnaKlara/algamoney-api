@@ -151,5 +151,9 @@ O projeto tem uma estrutura de diretórios particular. Uma árvore representativ
 - `security` — configurações de segurança da aplicação
 - `resource` — classes para ouvir/direcionar as requisições doc cliente
 - `resources/application.properties` — O Spring lê as propriedades definidas neste arquivo para configurar sua aplicação. Neste arquivo você pode definir a porta padrão do servidor, o context path do servidor, os URLs do banco de dados etc., neste arquivo
-- `token` — 
+- `token` — classes para lidar com o fornecimento/verificação de tokens de segurança
 - `pom.xml` - contém todas as dependências do projeto e suas respectivas configurações
+
+## Cliente
+
+Como projeto complementar a este foi desenvolvido uma aplicação cliente com Angular que interage com esta aplicação. Verifique o repósitório [algamoney-ui](https://github.com/AnaKlara/algamoney-ui) no Github.
