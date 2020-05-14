@@ -1,6 +1,7 @@
 package com.example.algamoney.api.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.amazonaws.auth.AWSCredentials;
@@ -21,6 +22,11 @@ public class S3Config {
 	@Autowired
 	private AlgamoneyApiProperty property;
 	
+	
+	/* A anotação Bean diz pro Spring que quer criar esse objeto e deixar ele disponível para outras classes utilizarem ele como dependência, por exemplo.
+	 * 22.32
+	 * */
+	@Bean
 	public AmazonS3 amazonS3() {
 		
 		AWSCredentials credenciais = new BasicAWSCredentials(property.gets3().getAccessKeyId(), property.gets3().getSecretAccessKey());

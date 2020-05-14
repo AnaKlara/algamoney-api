@@ -19,7 +19,7 @@ Para rodar a aplicação você irá precisar de:
 ## Ferramentas Externas Utilizadas
 
 * [Postman](https://www.getpostman.com/) - API Development Environment (Testing Documentation)
-* [jasperSoft](https://www.jaspersoft.com/) - Embedded Analytics and Reporting Software
+* [jasperSoft](https://www.jaspersoft.com/) - Embedded Analytics and Reporting Software (Geração de relatórios em pdf)
 * [Thymeleaf](https://www.thymeleaf.org/) - Server-side Java template engine (Template dos e-mails)
 
 
@@ -28,14 +28,14 @@ Para rodar a aplicação você irá precisar de:
 Primeiro renomeie o arquivo `ApplicationExample.properties` em `algamoney-api/src/main/resources/`  para `applicatioin.properties` e preencha-o com os dados necessários correspondentes às configurações da sua máquina. 
 
 Há diversos caminhos para rodar uma aplicação com Spring Boot na sua máquina local. Um deles é executar o método `main` na classe `algamoney-api/src/main/java/com/example/algamoney/api` da sua IDE. Para tal sga os passos abaixo:
-    — Faça o Download do zip do projeto ou clone o repositório Git
-    — Extraia o conteúdo do zip
-    — Abra o Command Prompt e navegue ($cd) até a pasta contendo o pom.xml
-    — Abra o eclipse
-    — Vá em: File -> Import -> Existing Maven Project -> Navegue até a pasta onde você extraiu o zip
-    — Selecione o projeto
-    — Choose the Spring Boot Application file (search for @SpringBootApplication)
-    — Clique com o direito no arquivo e faça Run as Java Application
+1. Faça o Download do zip do projeto ou clone o repositório Git
+2. Extraia o conteúdo do zip
+3. Abra o Command Prompt e navegue ($cd) até a pasta contendo o pom.xml
+4. Abra o eclipse
+5. Vá em: File -> Import -> Existing Maven Project -> Navegue até a pasta onde você extraiu o zip
+6. Selecione o projeto
+7. Choose the Spring Boot Application file (search for @SpringBootApplication)
+8. Clique com o direito no arquivo e faça Run as Java Application
 
 Uma alternativa é utilizar o [Spring Boot Maven plugin](https://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins-maven-plugin.html) com o comando:
 
@@ -57,7 +57,7 @@ Spring Boot Starter Security default username is `user` and a generated security
 
 ### URLs
 
-|  URL |  Method | Remarks |
+|  URL |  Método | Descrição |
 |----------|--------------|--------------|
 |`http://localhost:8080/pessoas`                                 | GET | Retorna todas as pessoas registradas no banco (com paginação) |
 |`http://localhost:8080/pessoas`                                 | POST | Registra uma pessoa |
@@ -104,6 +104,7 @@ O projeto tem uma estrutura de diretórios particular. Uma árvore representativ
 │                   ├── resource
 │                   ├── security
 │                   ├── service
+│                   ├── storage
 │                   └── token
 ├── src
 │   └── main
@@ -150,6 +151,7 @@ O projeto tem uma estrutura de diretórios particular. Uma árvore representativ
 - `models` — classes para representar entidades modeladas
 - `repository` — classes que lidam com a comunicação com o banco de dados
 - `services` — classes para lidar com as regras de negócio
+- `storage` — classes para lidar com o armazenamento/recuperação de arquivos junto ao serviço da amazon S3
 - `security` — configurações de segurança da aplicação
 - `resource` — classes para ouvir/direcionar as requisições doc cliente
 - `resources/application.properties` — O Spring lê as propriedades definidas neste arquivo para configurar sua aplicação. Neste arquivo você pode definir a porta padrão do servidor, o context path do servidor, os URLs do banco de dados etc., neste arquivo
