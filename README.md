@@ -19,6 +19,8 @@ Para rodar a aplicação você irá precisar de:
 ## Ferramentas Externas Utilizadas
 
 * [Postman](https://www.getpostman.com/) - API Development Environment (Testing Documentation)
+* [jasperSoft](https://www.jaspersoft.com/) - Embedded Analytics and Reporting Software
+* [Thymeleaf](https://www.thymeleaf.org/) - Server-side Java template engine (Template dos e-mails)
 
 
 ## Rodando a Aplicação Localmente:
@@ -26,14 +28,14 @@ Para rodar a aplicação você irá precisar de:
 Primeiro renomeie o arquivo `ApplicationExample.properties` em `algamoney-api/src/main/resources/`  para `applicatioin.properties` e preencha-o com os dados necessários correspondentes às configurações da sua máquina. 
 
 Há diversos caminhos para rodar uma aplicação com Spring Boot na sua máquina local. Um deles é executar o método `main` na classe `algamoney-api/src/main/java/com/example/algamoney/api` da sua IDE. Para tal sga os passos abaixo:
-    - Faça o Download do zip do projeto ou clone o repositório Git
-    - Extraia o conteúdo do zip
-    - Abra o Command Prompt e navegue ($cd) até a pasta contendo o pom.xml
-    - Abra o eclipse
-    - Vá em: File -> Import -> Existing Maven Project -> Navegue até a pasta onde você extraiu o zip
-    - Selecione o projeto
-    - Choose the Spring Boot Application file (search for @SpringBootApplication)
-    - Clique com o direito no arquivo e faça Run as Java Application
+    — Faça o Download do zip do projeto ou clone o repositório Git
+    — Extraia o conteúdo do zip
+    — Abra o Command Prompt e navegue ($cd) até a pasta contendo o pom.xml
+    — Abra o eclipse
+    — Vá em: File -> Import -> Existing Maven Project -> Navegue até a pasta onde você extraiu o zip
+    — Selecione o projeto
+    — Choose the Spring Boot Application file (search for @SpringBootApplication)
+    — Clique com o direito no arquivo e faça Run as Java Application
 
 Uma alternativa é utilizar o [Spring Boot Maven plugin](https://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins-maven-plugin.html) com o comando:
 

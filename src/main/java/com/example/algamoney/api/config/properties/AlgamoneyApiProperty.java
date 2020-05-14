@@ -3,7 +3,10 @@ package com.example.algamoney.api.config.properties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 
-//7.2   22.16
+// 7.2    --> 
+// 22.16  --> 
+// 22.30 --> S3
+// 22.31 --> Bucket
 @ConfigurationProperties("algamoney")
 public class AlgamoneyApiProperty {
 
@@ -108,6 +111,9 @@ public class AlgamoneyApiProperty {
 		private String accessKeyId;
 		private String secretAccessKey;
 		
+		private String bucket;
+		
+		
 		public String getAccessKeyId() {
 			return accessKeyId;
 		}
@@ -120,7 +126,12 @@ public class AlgamoneyApiProperty {
 		public void setSecretAccessKey(String secretAccessKey) {
 			this.secretAccessKey = secretAccessKey;
 		}
-		
+		public String getBucket() {
+			return bucket;
+		}
+		public void setBucket(String bucket) {
+			this.bucket = bucket;
+		}
 		
 	}
 
