@@ -10,12 +10,11 @@ public class AlgamoneyApiProperty {
 	private String originPermitida = "http://localhost:4200";
 
 	private final Seguranca seguranca = new Seguranca();
-
-	public Seguranca getSeguranca() {
-		return seguranca;
-	}
-
-
+	
+	private final S3 s3 = new S3();
+	
+	
+	
 	public String getOriginPermitida() {
 		return originPermitida;
 	}
@@ -24,6 +23,19 @@ public class AlgamoneyApiProperty {
 		this.originPermitida = originPermitida;
 	}
 
+	public Seguranca getSeguranca() {
+		return seguranca;
+	}
+
+	public S3 gets3() {
+		return s3;
+	}
+	
+	
+	//  ----------------------------
+	//  ------- Security
+	//  ----------------------------
+	
 	public static class Seguranca {
 
 		private boolean enableHttps;
@@ -87,7 +99,31 @@ public class AlgamoneyApiProperty {
 		}
 	}
 	
+	//  ----------------------------
+	//  ------- Amazon S3
+	//  ----------------------------
 	
-	
+	public static class S3 {
+		
+		private String accessKeyId;
+		private String secretAccessKey;
+		
+		public String getAccessKeyId() {
+			return accessKeyId;
+		}
+		public void setAccessKeyId(String accessKeyId) {
+			this.accessKeyId = accessKeyId;
+		}
+		public String getSecretAccessKey() {
+			return secretAccessKey;
+		}
+		public void setSecretAccessKey(String secretAccessKey) {
+			this.secretAccessKey = secretAccessKey;
+		}
+		
+		
+	}
 
+	
+	
 }
