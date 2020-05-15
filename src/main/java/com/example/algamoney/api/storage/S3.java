@@ -24,7 +24,6 @@ import com.amazonaws.services.s3.model.SetObjectTaggingRequest;
 import com.amazonaws.services.s3.model.Tag;
 
 import com.example.algamoney.api.config.properties.AlgamoneyApiProperty;
-import com.example.algamoney.api.model.Lancamento;
 
 @Component
 public class S3 {
