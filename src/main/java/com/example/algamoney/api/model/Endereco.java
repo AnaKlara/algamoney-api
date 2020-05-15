@@ -1,6 +1,8 @@
 package com.example.algamoney.api.model;
 
 import javax.persistence.Embeddable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -28,17 +30,14 @@ public class Endereco {
 	@Size(min = 3, max = 20)
 	private String cep;
 	
-	@NotNull
-	@Size(min = 3, max = 20)
-	private String cidade;
+	@ManyToOne
+	@JoinColumn(name = "codigo_cidade")
+	private Cidade cidade;
 	
-	@NotNull
-	@Size(min = 3, max = 20)
-	private String estado;
-
+	
+	
 	
 	//SETTERS AND GETTERS
-	
 
 
 	public String getLogradouro() {
@@ -81,19 +80,12 @@ public class Endereco {
 		this.cep = cep;
 	}
 
-	public String getCidade() {
+	public Cidade getCidade() {
 		return cidade;
 	}
-
-	public void setCidade(String cidade) {
+	
+	public void setCidade(Cidade cidade) {
 		this.cidade = cidade;
 	}
-
-	public String getEstado() {
-		return estado;
-	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
+	
 }
