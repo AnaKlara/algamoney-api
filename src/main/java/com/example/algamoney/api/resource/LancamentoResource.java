@@ -48,7 +48,7 @@ import com.example.algamoney.api.storage.S3;
 
 /* Controlador Rest*/
 
-@RequestMapping("/lancamento") // mapeamento da requisição
+@RequestMapping("/lancamentos") // mapeamento da requisição
 @RestController // converte automaticamente pra JSON
 public class LancamentoResource {
 

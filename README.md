@@ -1,4 +1,4 @@
-# algamoney-api
+# algamoney-API
 
 [![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
 
@@ -68,19 +68,20 @@ Spring Boot Starter Security default username is `user` and a generated security
 |`http://localhost:8080/categorias`                              | GET | Retorna todas as categorias |
 |`http://localhost:8080/categorias`                              | POST | Registra uma categoria |
 |`http://localhost:8080/categorias/10`                           | GET | Retorna uma categoria baseado no ID |
-|`http://localhost:8080/lancamento`                              | POST | Registra uma lançamento |
-|`http://localhost:8080/lancamento`                              | GET  | Retorna todos os lançmentos com paginação |
-|`http://localhost:8080/lancamento/10`                           | GET | Retorna um lançamento baseado no ID |
-|`http://localhost:8080/lancamento/10`                           | DELETE | Deleta um lançamento baseado no ID |
-|`http://localhost:8080/lancamento?resumo&descricao=`            | GET | Retorna resumos de lançamentos(apenas algumas propiedades) baseado na string de pesquisa  |
-|`http://localhost:8080/lancamento/anexo`                        | POST | Registra um anexo de lançamento |
-|`http://localhost:8080/lancamento/estatisticas/por-dia`         | GET | Retorna estatísticas de lançamento baseado em um período de tempo |
-|`http://localhost:8080/lancamento/estatisticas/por-categoria`   | GET | Retorna estatísticas de lançamento baseado em categorias |
+|`http://localhost:8080/lancamentos`                             | POST | Registra uma lançamento |
+|`http://localhost:8080/lancamentos`                             | GET  | Retorna todos os lançmentos com paginação |
+|`http://localhost:8080/lancamentos/10`                          | GET | Retorna um lançamento baseado no ID |
+|`http://localhost:8080/lancamentos/10`                          | DELETE | Deleta um lançamento baseado no ID |
+|`http://localhost:8080/lancamentos?resumo&descricao=`           | GET | Retorna resumos de lançamentos(apenas algumas propiedades) baseado na string de pesquisa  |
+|`http://localhost:8080/lancamentos/anexo`                       | POST | Registra um anexo de lançamento |
+|`http://localhost:8080/lancamentos/estatisticas/por-dia`        | GET | Retorna estatísticas de lançamento baseado em um período de tempo |
+|`http://localhost:8080/lancamentos/estatisticas/por-categoria`  | GET | Retorna estatísticas de lançamento baseado em categorias |
 |`http://localhost:8080/oauth/token`                             | POST | Solicita Acess Token |
 |`http://localhost:8080/oauth/token`                             | POST | Solicita Refresh Token |
 |`http://localhost:8080/tokens/revoke`                           | DELETE | Apagar token |
 |`http://localhost:8080/relatorios/por-pessoa?inicio=2020-01-01&fim=2020-04-01`                                                  | GET | Retorna um relatório em PDF baseado em um período de tempo  |
-
+|`http://localhost:8080/estados`                                 | GET  | Retorna todos os estados cadastrados no banco |
+|`http://localhost:8080/cidades/10`                              | GET | Retorna uma lista de cidades baseada no ID de um estado |
 ## Arquivos e Diretórios
 
 O projeto tem uma estrutura de diretórios particular. Uma árvore representativa é mostrada a seguir:
