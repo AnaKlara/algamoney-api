@@ -23,7 +23,7 @@ Para rodar a aplicação você irá precisar de:
 * [Thymeleaf](https://www.thymeleaf.org/) - Server-side Java template engine (Template dos e-mails)
 
 
-## Rodando a Aplicação Localmente:
+## Rodando a Aplicação Localmente
 
 Primeiro renomeie o arquivo `ApplicationExample.properties` em `algamoney-api/src/main/resources/`  para `applicatioin.properties` e preencha-o com os dados necessários correspondentes às configurações da sua máquina. 
 

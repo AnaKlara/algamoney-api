@@ -9,10 +9,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.AccessControlList;
+import com.amazonaws.services.s3.model.DeleteObjectRequest;
 import com.amazonaws.services.s3.model.GroupGrantee;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.ObjectTagging;
@@ -22,6 +24,7 @@ import com.amazonaws.services.s3.model.SetObjectTaggingRequest;
 import com.amazonaws.services.s3.model.Tag;
 
 import com.example.algamoney.api.config.properties.AlgamoneyApiProperty;
+import com.example.algamoney.api.model.Lancamento;
 
 @Component
 public class S3 {
@@ -96,4 +99,20 @@ public class S3 {
 				
 		
 	}
+
+	// 22.35
+	public void remover(String anexo) {
+		DeleteObjectRequest deleteObjectRequest = new DeleteObjectRequest(property.gets3().getBucket(), anexo);
+		amazonS3.deleteObject(deleteObjectRequest);
+	}
+
+	public void substituir(String anexoAntigo, String anexoNovo) {
+	
+		if ( StringUtils.hasText(anexoAntigo)) {
+			this.remover(anexoAntigo);
+		}
+		salvar(anexoNovo);
+	}
+
+	
 }
