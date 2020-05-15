@@ -2,6 +2,7 @@ package com.example.algamoney.api.storage;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.UUID;
 
 import org.slf4j.Logger;
@@ -17,6 +18,7 @@ import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.ObjectTagging;
 import com.amazonaws.services.s3.model.Permission;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.amazonaws.services.s3.model.SetObjectTaggingRequest;
 import com.amazonaws.services.s3.model.Tag;
 
 import com.example.algamoney.api.config.properties.AlgamoneyApiProperty;
@@ -78,6 +80,20 @@ public class S3 {
 	}
 	
 	public String configurarUrl(String objeto) {
+		
+		// as barras duplicadas servem para adaptar a URL para qualquer protocolo, pode ser http ou https
 		return "\\\\" + property.gets3().getBucket() + ".s3-sa-east-1.amazonaws.com/" + objeto ;
+	}
+
+	public void salvar(String objeto) {
+		SetObjectTaggingRequest setObjectTaggingRequest = new SetObjectTaggingRequest(
+																			property.gets3().getBucket(),
+																			objeto,
+																			new ObjectTagging(Collections.emptyList())
+																			);
+		amazonS3.setObjectTagging(setObjectTaggingRequest);
+				
+				
+		
 	}
 }

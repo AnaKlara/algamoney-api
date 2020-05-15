@@ -15,6 +15,7 @@ public abstract class Lancamento_ {
 	public static volatile SingularAttribute<Lancamento, TipoLancamento> tipo;
 	public static volatile SingularAttribute<Lancamento, LocalDate> dataPagamento;
 	public static volatile SingularAttribute<Lancamento, Pessoa> pessoa;
+	public static volatile SingularAttribute<Lancamento, String> anexo;
 	public static volatile SingularAttribute<Lancamento, LocalDate> dataVencimento;
 	public static volatile SingularAttribute<Lancamento, Categoria> categoria;
 	public static volatile SingularAttribute<Lancamento, BigDecimal> valor;

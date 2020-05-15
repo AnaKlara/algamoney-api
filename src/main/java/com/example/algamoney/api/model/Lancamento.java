@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -58,6 +59,13 @@ public class Lancamento {
 	@ManyToOne
 	@JoinColumn(name = "codigo_pessoa")
 	private Pessoa pessoa;
+	
+	// 22.34
+	//está sem anotação pois ela não é uma propriedade obrigatória
+	private String anexo;
+	
+	@Transient //não vai persistir no banco
+	private String urlAnexo;
 
 	public Long getCodigo() {
 		return codigo;
@@ -156,10 +164,18 @@ public class Lancamento {
 		return true;
 	}
 	
-	//22.21
+	// 22.21
 	@JsonIgnore
 	public boolean isReceita() {
 		return TipoLancamento.RECEITA.equals(tipo);		
 	}
+	
+	// 22.34
+	public String getAnexo() {
+		return anexo;
+	}
 
+	public void setAnexo(String anexo) {
+		this.anexo = anexo;
+	}
 }
