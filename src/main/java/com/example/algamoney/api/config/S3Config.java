@@ -33,6 +33,7 @@ public class S3Config {
 		
 		AmazonS3 amazonS3 = AmazonS3ClientBuilder.standard()
 														.withCredentials(new AWSStaticCredentialsProvider(credenciais))
+														.withRegion("sa-east-1")
 														.build();
 		/*Cria o bucket se ele não existir;
 		 * Já que podemos ter arquivos temporários, criamos uma regra que determina quanto tempo um arquivo pode ser temporário;		 * 
