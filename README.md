@@ -4,6 +4,11 @@
 
 Este projeto é uma API [Spring Boot](http://projects.spring.io/spring-boot/) desenvolvida para auxiliar o controle financeiro de uma empresa.
 
+## Diagrama de Classes
+
+![Alt text](diagrama.png "Diagrama de classes")
+
+
 ## Requisitos
 
 Para rodar a aplicação você irá precisar de:
