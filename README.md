@@ -1,7 +1,5 @@
 # algamoney-API
 
-[![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
-
 Este projeto é uma API [Spring Boot](http://projects.spring.io/spring-boot/) desenvolvida para auxiliar o controle financeiro de uma empresa.
 
 ## Diagrama de Classes
@@ -9,7 +7,7 @@ Este projeto é uma API [Spring Boot](http://projects.spring.io/spring-boot/) de
 ![Alt text](diagrama.png "Diagrama de classes")
 
 
-## Requisitos
+## Requisitos da Máquina
 
 Para rodar a aplicação você irá precisar de:
 
@@ -24,7 +22,7 @@ Para rodar a aplicação você irá precisar de:
 ## Ferramentas Externas Utilizadas
 
 * [Postman](https://www.getpostman.com/) - API Development Environment (Testing Documentation)
-* [jasperSoft](https://www.jaspersoft.com/) - Embedded Analytics and Reporting Software (Geração de relatórios em pdf)
+* [JasperSoft](https://www.jaspersoft.com/) - Embedded Analytics and Reporting Software (Geração de relatórios em pdf)
 * [Thymeleaf](https://www.thymeleaf.org/) - Server-side Java template engine (Template dos e-mails)
 
 
@@ -50,14 +48,27 @@ mvn spring-boot:run
 
 ### Segurança
 
-```
-<dependency>
-  <groupId>org.springframework.boot</groupId>
-  <artifactId>spring-boot-starter-security</artifactId>
-</dependency>
-```
+No pom.xml podemos observar as dependências necessárias ao bom funcionamento dos requisitos de segurança adequados para o projeto:
 
-Spring Boot Starter Security default username is `user` and a generated security password is printed in the console like `Using generated security password: 0423bec1-6759-4ed2-8e3e-e8196effadf9`
+```
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-security</artifactId>
+		    <version>2.2.2.RELEASE</version><!--$NO-MVN-MAN-VER$-->
+		</dependency>
+				
+		<dependency>
+			<groupId>org.springframework.security.oauth</groupId>
+			<artifactId>spring-security-oauth2</artifactId>
+			<version>2.3.5.RELEASE</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-jwt</artifactId>
+		    <version>1.0.0.RELEASE</version>
+		</dependency>
+```
 
 
 ### URLs
