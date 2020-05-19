@@ -7,10 +7,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
@@ -22,13 +21,13 @@ import com.example.algamoney.api.config.token.CustonTokenEnahncer;
 
 @Profile("oauth-security")//7.6
 @Configuration
-@EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
 	
-	BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+	@Autowired
+	private UserDetailsService userDetailsService;
 
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
@@ -54,6 +53,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 			.tokenStore(tokenStore())
 			.tokenEnhancer(tokenEnhanceChain)
 			.reuseRefreshTokens(false)
+			.userDetailsService(userDetailsService)
 			.authenticationManager(authenticationManager);
 	}
 
