@@ -48,13 +48,13 @@ mvn spring-boot:run
 
 ### Segurança
 
-No pom.xml podemos observar as dependências necessárias ao bom funcionamento dos requisitos de segurança adequados para o projeto:
+No `pom.xml` podemos observar as dependências necessárias ao bom funcionamento dos requisitos de segurança adequados para o projeto:
 
 ```
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-security</artifactId>
-		    <version>2.2.2.RELEASE</version><!--$NO-MVN-MAN-VER$-->
+		    <version>2.2.2.RELEASE</version>
 		</dependency>
 				
 		<dependency>
