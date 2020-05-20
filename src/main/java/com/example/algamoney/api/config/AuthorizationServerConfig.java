@@ -37,7 +37,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 				.scopes("read", "write")// é possível cadastrar diferentes clientes, cada um com escopos diferentes (6:12) --> é um gerenciador de permissões a nível de aplicação
 				.authorizedGrantTypes("password", "refresh_token")//6.6
 				.accessTokenValiditySeconds(1800) // 1800
-				.refreshTokenValiditySeconds(3600 * 24); //3600 * 24
+				.refreshTokenValiditySeconds(3600 * 24); //3600 * 24 == 1 dia
 	}
 
 	

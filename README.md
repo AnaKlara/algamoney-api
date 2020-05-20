@@ -16,7 +16,7 @@ Para rodar a aplicação você irá precisar de:
 * 	[Flyway](https://flywaydb.org/) - Controle de versão do banco de dados
 * 	[Spring Boot](https://spring.io/projects/spring-boot) - Framework para facilitar o bootstrapping and desenvolvimento de novas aplicações Spring 
 * 	[MySQL](https://www.mysql.com/) - Sistema de Gerenciamento de Banco de Dados Relacional Open-Source 
-* 	[git](https://git-scm.com/) - Sistema de Controle de Versão
+* 	[Git](https://git-scm.com/) - Sistema de Controle de Versão
 
 
 ## Ferramentas Externas Utilizadas
@@ -132,7 +132,9 @@ O projeto tem uma estrutura de diretórios particular. Uma árvore representativ
 │           │         ├── V02__criar_tabela_pessoa.sql
 │           │         ├── V03__criar_tabela_lancamento.sql
 │           │         ├── V04__criar_e_registrar_usuarios_e_permissoes.sql
-│           │         └── V05__criar_tabela_contato.sql
+│           │         ├── V05__criar_tabela_contato.sql
+│           │         ├── V06__coluna_anexo_tabela_lancamento.sql
+│           │         └── V07__criar_e_registrar_cidade_e_estado.sql
 │           ├── relatorios
 │           │     └── lancamentos-por-pessoa.jasper
 │           ├── templates
