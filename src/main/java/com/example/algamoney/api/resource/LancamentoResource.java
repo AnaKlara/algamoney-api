@@ -148,14 +148,14 @@ public class LancamentoResource {
 	
 	//22.2
 	@GetMapping("/estatisticas/por-categoria")
-	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_LANCAMENTO') and #oauth2.hasScope('read')")
+	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_LANCAMENTO')")
 	public List<LancamentoEstatisticaCategoria> porCategoria() {
 		return this.lancamentoRepository.porCategoria(LocalDate.now());
 	}
 	
 	//22.5
 	@GetMapping("/estatisticas/por-dia")
-	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_LANCAMENTO') and #oauth2.hasScope('read')")
+	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_LANCAMENTO')")
 	public List<LancamentoEstatisticaDia> porDia() {
 			return this.lancamentoRepository.porDia(LocalDate.now());
 		}
@@ -163,7 +163,7 @@ public class LancamentoResource {
 	
 	//22.14
 	@GetMapping("/relatorios/por-pessoa")
-	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_LANCAMENTO') and #oauth2.hasScope('read')")
+	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_LANCAMENTO')")
 	public ResponseEntity<byte[]> relatorioPorPessoa(
 			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate inicio, 
 			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fim

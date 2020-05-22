@@ -33,7 +33,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 		clients.inMemory()
 				.withClient("angular")
-				.secret("$2a$10$TZUyFkp1X2F2ymKdey/atu44n8gSyIRLDmg6ly5Q.E5ETFxmz2jM2")//@ngul@r0 encodado com BCrypt
+				.secret("$2a$10$4CvdsdqhNu/A1ERtlyqOYeSbwnRbL7xCbPclZ7k3o6HvWw0oU3v1u")//@ngul@r0 encodado com BCrypt
 				.scopes("read", "write")// é possível cadastrar diferentes clientes, cada um com escopos diferentes (6:12) --> é um gerenciador de permissões a nível de aplicação
 				.authorizedGrantTypes("password", "refresh_token")//6.6
 				.accessTokenValiditySeconds(1800) // 1800
