@@ -4,8 +4,7 @@ Este projeto é uma API [Spring Boot](http://projects.spring.io/spring-boot/) de
 
 ## Diagrama de Classes
 
-![Alt text](diagrama.png "Diagrama de classes")
-
+![Alt text](https://user-images.githubusercontent.com/28203278/83462766-6fe07800-a442-11ea-8ba0-ec09340e60f9.png)
 
 ## Requisitos da Máquina
 
@@ -77,17 +76,17 @@ No `pom.xml` podemos observar as dependências necessárias ao bom funcionamento
 |----------|--------------|--------------|
 |`http://localhost:8080/pessoas`                                 | GET | Retorna todas as pessoas registradas no banco (com paginação) |
 |`http://localhost:8080/pessoas`                                 | POST | Registra uma pessoa |
-|`http://localhost:8080/pessoas/10`                              | GET | Retorna o registro de uma pessoa baseada no ID dela |
-|`http://localhost:8080/pessoas/10`                              | DELETE | Deleta o registro de uma pessoa baseada no ID dela |
-|`http://localhost:8080/pessoas/10`                              | PUT | Atualiza o registro(completo) de uma pessoa baseado no ID dela |
-|`http://localhost:8080/pessoas/10`                              | PUT | Atualiza a propriedade ativo de uma pessoa baseada no ID dela |
+|`http://localhost:8080/pessoas/{id}`                              | GET | Retorna o registro de uma pessoa baseada no ID dela |
+|`http://localhost:8080/pessoas/{id}`                              | DELETE | Deleta o registro de uma pessoa baseada no ID dela |
+|`http://localhost:8080/pessoas/{id}`                              | PUT | Atualiza o registro(completo) de uma pessoa baseado no ID dela |
+|`http://localhost:8080/pessoas/{id}`                              | PUT | Atualiza a propriedade ativo de uma pessoa baseada no ID dela |
 |`http://localhost:8080/categorias`                              | GET | Retorna todas as categorias |
 |`http://localhost:8080/categorias`                              | POST | Registra uma categoria |
-|`http://localhost:8080/categorias/10`                           | GET | Retorna uma categoria baseado no ID |
+|`http://localhost:8080/categorias/{id}`                           | GET | Retorna uma categoria baseado no ID |
 |`http://localhost:8080/lancamentos`                             | POST | Registra uma lançamento |
 |`http://localhost:8080/lancamentos`                             | GET  | Retorna todos os lançmentos com paginação |
-|`http://localhost:8080/lancamentos/10`                          | GET | Retorna um lançamento baseado no ID |
-|`http://localhost:8080/lancamentos/10`                          | DELETE | Deleta um lançamento baseado no ID |
+|`http://localhost:8080/lancamentos/{id}`                          | GET | Retorna um lançamento baseado no ID |
+|`http://localhost:8080/lancamentos/{id}`                          | DELETE | Deleta um lançamento baseado no ID |
 |`http://localhost:8080/lancamentos?resumo&descricao=`           | GET | Retorna resumos de lançamentos(apenas algumas propiedades) baseado na string de pesquisa  |
 |`http://localhost:8080/lancamentos/anexo`                       | POST | Registra um anexo de lançamento |
 |`http://localhost:8080/lancamentos/estatisticas/por-dia`        | GET | Retorna estatísticas de lançamento baseado em um período de tempo |
@@ -95,9 +94,9 @@ No `pom.xml` podemos observar as dependências necessárias ao bom funcionamento
 |`http://localhost:8080/oauth/token`                             | POST | Solicita Acess Token |
 |`http://localhost:8080/oauth/token`                             | POST | Solicita Refresh Token |
 |`http://localhost:8080/tokens/revoke`                           | DELETE | Apagar token |
-|`http://localhost:8080/relatorios/por-pessoa?inicio=2020-01-01&fim=2020-04-01`                                                  | GET | Retorna um relatório em PDF baseado em um período de tempo  |
+|`http://localhost:8080/relatorios/por-pessoa?inicio={datetime}&fim={datetime}`                                                  | GET | Retorna um relatório em PDF baseado em um período de tempo  |
 |`http://localhost:8080/estados`                                 | GET  | Retorna todos os estados cadastrados no banco |
-|`http://localhost:8080/cidades/10`                              | GET | Retorna uma lista de cidades baseada no ID de um estado |
+|`http://localhost:8080/cidades/{id}`                              | GET | Retorna uma lista de cidades baseada no ID de um estado |
 ## Arquivos e Diretórios
 
 O projeto tem uma estrutura de diretórios particular. Uma árvore representativa é mostrada a seguir:
