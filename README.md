@@ -179,3 +179,5 @@ O projeto tem uma estrutura de diretórios particular. Uma árvore representativ
 ## Cliente
 
 Como projeto complementar a este foi desenvolvido uma aplicação cliente com Angular que interage com esta aplicação. Verifique o repósitório [algamoney-ui](https://github.com/AnaKlara/algamoney-ui) no Github.
+
+Qualquer dúvida e/ou feedback escreva um e-mail para claracorreadasilva@gmail.com
